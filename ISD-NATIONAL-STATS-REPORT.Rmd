@@ -16,9 +16,20 @@ Q3Cases <- c(19, 6, 4, 10, 10, 30, 79, 16, 24, 36, 0, 1, 0, 22, 0, 257)
 
 Q3BedDays <- c(69082, 19603, 27097, 47691, 50473, 76321, 206241, 42439, 87927, 148176, 7091, 2194, 2257, 70267, 4632, 861491)
 
-Q3Rate <- c(69082, 19603, 27097, 47691, 50473, 76321, 206241, 42439, 87927, 148176, 7091, 2194, 2257, 70267, 4632, 861491)
+Q3Rate <- c(27.5, 30.6, 14.8, 21.0, 19.8, 39.3, 38.3, 37.7, 27.3, 24.3, 0.0, 45.6, 0.0, 31.3, 0.0, 29.8)
 
 TableData <- data.frame(NHSBoard, Q2Cases, Q2BedDays, Q2Rate, Q3Cases, Q3BedDays, Q3Rate)
+```
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
+FileName <- c("Performance standards", 
+              "Performance standards (three-year rolling periods)",
+              "Uptake by NHS Board",
+              "Historical trends in Performance standards (three-year rolling periods)",
+              "Historical trends in Uptake by NHS Board")
+FileandSize <- c("Excel 500 Kb", "Excel 750 Kb", "Excel 750 Kb", "Excel 1.2 Mb", "Excel 1.2 Mb")
+
+ListofTables <- data.frame(FileName, FileandSize)
 ```
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
@@ -135,6 +146,9 @@ Fusce hendrerit nibh sit amet tellus tincidunt vehicula. Class aptent taciti soc
 [pagebreak]
 
 ##List of Tables
+```{r, echo = FALSE, results='asis'}
+knitr::kable(ListofTables)
+```
 
 [pagebreak]
 
