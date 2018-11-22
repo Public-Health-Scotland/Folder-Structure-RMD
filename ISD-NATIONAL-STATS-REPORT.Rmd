@@ -3,8 +3,8 @@ output:
   word_document:
     reference_docx: "NATIONAL_STATS_REPORT_TEMPLATE.docx"
 ---
-```{r, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
-NHSBoard <- c("AA", "BR", "DG", "FF", "FV", "GR", "GGC", "HG", "LN", "LO", "NWTC", "OR", "SH", "TY", "WI", "Scotland")
+```{r TableData, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
+NHSBoard <- c("AA", "BR", "DG", "FF", "FV", "GR", "GGC", "HG", "LN", "LO", "NWTC", "OR", "SH", "TY", "WI", "**Scotland**")
 
 Q2Cases <- c(22, 2, 9, 9, 10, 16, 52, 9, 22, 44, 0, 1, 0, 24, 1, 221)
 
@@ -19,9 +19,70 @@ Q3BedDays <- c(69082, 19603, 27097, 47691, 50473, 76321, 206241, 42439, 87927, 1
 Q3Rate <- c(27.5, 30.6, 14.8, 21.0, 19.8, 39.3, 38.3, 37.7, 27.3, 24.3, 0.0, 45.6, 0.0, 31.3, 0.0, 29.8)
 
 TableData <- data.frame(NHSBoard, Q2Cases, Q2BedDays, Q2Rate, Q3Cases, Q3BedDays, Q3Rate)
+
+TableData[16, c(2:7)] <- c("**221**", "**910937**", "**24.3**", "**257**", "**861491**", "**29.8**")
 ```
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
+```{r Figures, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
+library(ggplot2)
+library(scales)
+
+#Create Figure 1
+HBR <- c("Ayrshire & Arran", "Borders", "Dumfries & Galloway", "Fife", "Forth Valley",
+         "Grampian", "Greater Glasgow & Clyde", "Highland", "Lanarkshire", "Lothian", 
+         "Orkney", "Shetland", "Tayside", "Western Isles", "Scotland")
+
+UptakeRate <- c(72, 76, 78, 69, 71, 79, 67, 77, 68, 69, 84, 84.5, 76, 80.5, 72)
+
+FigureOneData <- data.frame(HBR, UptakeRate)
+
+FigureOne <- ggplot(data = FigureOneData, aes(x = HBR, y = UptakeRate, fill = HBR)) +
+  geom_bar(position = "dodge", stat = "identity", width = 0.5, show.legend = F) + 
+  scale_y_continuous(breaks = c(50, 55, 60, 65, 70, 75, 80, 85, 90), 
+                     limits = c(50, 90), oob = rescale_none) +
+  geom_hline(yintercept = 70, size = 1, color = "#092869") +
+  geom_hline(yintercept = 80, size = 1, color = "#092869", linetype = "dashed") +
+  coord_flip() +
+  theme(panel.background = element_blank(),
+    panel.grid.major.x = element_line(size = .1, color = "#C0C0C0"), 
+    panel.grid.major.y = element_blank(),
+    axis.title.x = element_text(size = 9, face = "bold"),
+    axis.title.y = element_text(size = 9, face = "bold")) +
+  scale_x_discrete(limits = c("Scotland", "Western Isles", "Tayside", "Shetland", "Orkney", 
+                              "Lothian", "Lanarkshire", "Highland", "Greater Glasgow & Clyde",
+                              "Grampian", "Forth Valley", "Fife", "Dumfries & Galloway", 
+                              "Borders", "Ayrshire & Arran")) +
+  scale_fill_manual(values = c("#0391BF", "#0391BF", "#0391BF", "#0391BF", "#0391BF", 
+                               "#0391BF", "#0391BF", "#0391BF", "#0391BF", "#0391BF",
+                               "#0391BF", "#092869", "#0391BF", "#0391BF", "#0391BF")) +
+  xlab("NHS Board of Residence") + ylab("Uptake rate (%)")
+
+ggsave("Figure1_ggplot.png", plot = FigureOne, device = "png", dpi = 300)
+
+#Create Figure 2
+RollingYear <- c("2007-10", "2008-11", "2009-12", "2010-13", "2011-14", "2012-15", "2013-16")
+DetectionRate <- c(6.2, 6.5, 7, 7.1, 6.9, 6.4, 6.2)
+
+FigureTwoData <- data.frame(RollingYear, DetectionRate)
+
+FigureTwo <- ggplot(data = FigureTwoData, aes(x = RollingYear, y = DetectionRate)) +
+  geom_bar(position = "dodge", stat = "identity", width = 0.5, 
+            show.legend = F, fill = "#0391BF") + 
+  scale_y_continuous(breaks = c(0:8), 
+                     limits = c(0, 8)) +
+  geom_hline(yintercept = 3.1, size = 1, color = "#092869") +
+  geom_hline(yintercept = 4.1, size = 1, color = "#092869", linetype = "dashed") +
+  theme(panel.background = element_blank(),
+    panel.grid.major.x = element_blank(), 
+    panel.grid.major.y = element_line(size = .1, color = "#C0C0C0"), 
+    axis.title.x = element_text(size = 9, face = "bold"),
+    axis.title.y = element_text(size = 9, face = "bold")) +
+  xlab("Three Year Rolling Period") + ylab("Cancer detection rate \n (per 1000 women screened)")
+  
+ggsave("Figure2_ggplot.png", plot = FigureTwo, device = "png", dpi = 300)
+```
+
+```{r ListofTables, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
 FileName <- c("Performance standards", 
               "Performance standards (three-year rolling periods)",
               "Uptake by NHS Board",
@@ -32,7 +93,7 @@ FileandSize <- c("Excel 500 Kb", "Excel 750 Kb", "Excel 750 Kb", "Excel 1.2 Mb",
 ListofTables <- data.frame(FileName, FileandSize)
 ```
 
-```{r, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
+```{r glossary, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
 glossary1 <- c("Hendrerit", "Class aptent")
 glossary2 <- c("Donec et metus sodales, aliquet ligula nec, bibendum leo.",
                "Nullam mi libero, hendrerit vitae condimentum in, iaculis porta purus. Suspendisse potenti. Donec sed molestie nisi, ut blandit ex. Proin tempor, mauris sit amet consectetur placerat, elit lorem placerat dui, sed placerat mi ante a purus.")
@@ -40,32 +101,96 @@ glossary2 <- c("Donec et metus sodales, aliquet ligula nec, bibendum leo.",
 glossary <- data.frame(glossary1, glossary2)
 ```
 
+```{r MetaData, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
+Indicator <- c("Publication title",
+"Description",
+"Theme",
+"Topic",
+"Format",
+"Data source(s)",
+"Date that data are acquired",
+"Release date",
+"Frequency",
+"Timeframe of data and timeliness",
+"Continuity of data",
+"Revisions statement",
+"Revisions relevant to this publication",
+"Concepts and definitions",
+"Relevance and key uses of the statistics",
+"Accuracy",
+"Completeness",
+"Comparability",
+"Accessibility",
+"Coherence and clarity",
+"Value type and unit of measurement",
+"Disclosure",
+"Official Statistics designation",
+"UK Statistics Authority Assessment",
+"Last published",
+"Next published",
+"Date of first publication",
+"Help email",
+"Date form completed")
+
+Description <- c("",
+"",
+"",
+"",
+"",
+"",
+"DD Month YYYY",
+"DD Month YYYY",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"",
+"DD Month YYYY",
+"DD Month YYYY",
+"DD Month YYYY",
+"",
+"DD Month YYYY")
+
+MetaData <- data.frame(Indicator, Description)
+```
+
 #This is a National Statistics Publication
 
 ![National Statistics Quality Mark](kitemark_tcm97-17949.jpg) \
 
-\newline
+<br>
 
 National Statistics status means that the official statistics meet the highest standards of trustworthiness, quality and public value. They are identified by the quality mark shown above.
 They comply with the Code of Practice for statistics and are awarded National Statistics status following an assessment by the UK Statistics Authority’s regulatory arm. The Authority considers whether the statistics meet the highest standards of Code compliance, including the value they add to public decisions and debate.
 
-\newline
+<br>
 
 Find out more about the Code of Practice at:   
 https://www.statisticsauthority.gov.uk/osr/code-of-practice/
 
-\newline
+<br>
 
 Find out more about National Statistics at:  
 https://www.statisticsauthority.gov.uk/national-statistician/types-of-official-statistics/ 
 
-[pagebreak]
+##### Page Break
 
 ##Contents
 
-\newline
+<br>
 
-```{r, echo = FALSE, results="asis"}
+```{r Contents, echo = FALSE, results="asis"}
 cat("1. Introduction",  
     "2. Main Points",  
     "3. Results and Commentary",  
@@ -84,7 +209,7 @@ cat("1. Introduction",
     sep = "\n")
 ```
 
-[pagebreak]
+##### Page Break
 
 ##Introduction
 
@@ -92,7 +217,7 @@ In tristique lobortis sagittis. Phasellus mollis mattis iaculis. Vivamus nunc ju
 Proin vitae vehicula purus. Cras consequat iaculis venenatis. Morbi vel risus vestibulum, aliquet mi in, volutpat massa. Sed urna sem, posuere eu semper vitae, ullamcorper quis leo. Mauris nisi metus, scelerisque sed urna eu, maximus porttitor ante. Sed scelerisque accumsan commodo. Sed interdum justo volutpat, sodales nisi sed, consectetur arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec sodales lacus in erat elementum viverra. Phasellus faucibus faucibus erat vitae pharetra. Mauris sed blandit dolor. Duis consequat fermentum diam quis elementum. Maecenas euismod non lorem sit amet ornare.
 Praesent congue molestie nisi, ut congue dui mattis in. Vivamus vel urna risus. Donec sed blandit ex. Donec vel aliquam velit, in vestibulum lectus. Vivamus molestie massa in quam porttitor viverra. Nulla facilisi. Suspendisse fermentum metus justo, vel elementum ante rutrum eget.
 
-[pagebreak]
+##### Page Break
 
 ##Main Points
 
@@ -100,7 +225,7 @@ Praesent congue molestie nisi, ut congue dui mattis in. Vivamus vel urna risus. 
 * Proin vitae vehicula purus. Cras consequat iaculis venenatis. Morbi vel risus vestibulum, aliquet mi in, volutpat massa. Sed urna sem, posuere eu semper vitae, ullamcorper quis leo. Mauris nisi metus, scelerisque sed urna eu, maximus porttitor ante. Sed scelerisque accumsan commodo. Sed interdum justo volutpat, sodales nisi sed, consectetur arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 * Praesent congue molestie nisi, ut congue dui mattis in. Vivamus vel urna risus. Donec sed blandit ex. Donec vel aliquam velit, in vestibulum lectus.
 
-[pagebreak]
+##### Page Break
 
 ##Results and Commentary
 Suspendisse velit nisi, tempor ut posuere ut, blandit in mauris. Suspendisse commodo sagittis pretium. Nullam.
@@ -110,12 +235,13 @@ Suspendisse potenti. Donec sit amet porttitor urna. Fusce egestas et elit quis i
 Sed suscipit nisl vel orci scelerisque mattis. Proin ut tortor et purus bibendum pharetra vel elementum dolor. Morbi orci massa, egestas vel dictum quis, maximus id justo. Fusce eu sem consequat, mollis nulla in, mollis nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at facilisis augue.
 
 ####Table title
-```{r, echo = FALSE, results='asis'}
-knitr::kable(TableData)
+```{r kable_TableData, echo = FALSE}
+knitr::kable(TableData, col.names = c("**NHS Board**", "**Q2 Cases**", "**Q2 Bed Days**", 
+                                      "**Q2 Rate**", "**Q3 Cases**", "**Q3 Bed Days**", "**Q3 Rate**"))
 ```
 
-####Figure 1: Uptake rate1 by NHS Board by three-year rolling period 2013-161,2,3,4
-![Uptake rate by NHS Board by three-year rolling period 2013-16.](Figure1.png) \
+####Figure 1: Uptake rate^1^ by NHS Board by three-year rolling period 2013-16^1,2,3,4^
+![Uptake rate by NHS Board by three-year rolling period 2013-16.](Figure1_ggplot.png) \
 
 1. Note one.  
 2. Note two.  
@@ -127,30 +253,30 @@ Fusce hendrerit nibh sit amet tellus tincidunt vehicula. Class aptent taciti soc
 Mauris ac neque vel erat varius cursus. Praesent at molestie felis. Nunc eget ipsum non lectus facilisis dictum quis viverra magna. Pellentesque elementum condimentum accumsan. Nunc vel pharetra augue. Pellentesque vitae lectus cursus magna blandit aliquet. In aliquet sapien sit amet viverra aliquam.
 Pellentesque aliquam imperdiet neque et interdum. Nulla sodales tellus magna, id venenatis justo pulvinar ut. Etiam luctus facilisis auctor. Curabitur interdum feugiat convallis. Nullam mi libero, hendrerit vitae condimentum in, iaculis porta purus. Suspendisse potenti. Donec sed molestie nisi, ut blandit ex. Proin tempor, mauris sit amet consectetur placerat, elit lorem placerat dui, sed placerat mi ante a purus.
 
-[pagebreak]
+##### Page Break
 
 ####Figure 2: Trend in invasive cancer detection rate for Scotland
 ![Trend in invasive cancer detection rates for Scotland,
-three-year rolling periods (2007/10 to 2013/16). There is a bar for each three-year rolling period.
-](Figure2.png) \
+three-year rolling periods (2007/10 to 2013/16). There is a bar for each three-year rolling period.](Figure2_ggplot.png) \
 
 Fusce hendrerit nibh sit amet tellus tincidunt vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam non libero eu orci viverra rhoncus eu sed massa. Donec viverra scelerisque orci, sit amet dignissim eros ullamcorper rhoncus. Donec et metus sodales, aliquet ligula nec, bibendum leo. 
 
-[pagebreak]
+##### Page Break
 
 ##Glossary
-```{r, echo = FALSE}
-    knitr::kable(glossary, col.names=NULL)
+```{r kable_glossary, echo = FALSE}
+    knitr::kable(glossary, col.names = NULL)
 ```
 
-[pagebreak]
+##### Page Break
 
 ##List of Tables
-```{r, echo = FALSE, results='asis'}
-knitr::kable(ListofTables)
+<br>
+```{r kable_ListOfTables, echo = FALSE}
+knitr::kable(ListofTables, col.names = c("**File name**", "**File and size**"))
 ```
 
-[pagebreak]
+##### Page Break
 
 ##Contact
 **Name, title**  
@@ -170,7 +296,7 @@ The next release of this publication will be DD Month YYYY.
 ##Rate this publication
 Please [provide feedback](http://www.isdscotland.org/Health-Topics/HEALTHTOPIC/Publications/rate-this-publication.asp?ID=XXXX) on this publication to help us improve our services.
 
-[pagebreak]
+##### Page Break
 
 ##Appendices
 ###Appendix 1 – Background information
@@ -178,41 +304,45 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praes
 Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. 
 Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna.
 
-[pagebreak]
+##### Page Break
 
 ###Appendix 2 – Publication Metadata
+<br>
+```{r kable_MetaData, echo = FALSE}
+knitr::kable(MetaData, col.names = c("**Metadata Indicator**", "**Description**"))
+```
 
-[pagebreak]
+##### Page Break
 
 ###Appendix 3 – Early access details
 
-\newline
+<br>
 
 **Pre-Release Access**  
 Under terms of the "Pre-Release Access to Official Statistics (Scotland) Order 2008", ISD is obliged to publish information on those receiving Pre-Release Access ("Pre-Release Access" refers to statistics in their final form prior to publication). The standard maximum Pre-Release Access is five working days. Shown below are details of those receiving standard Pre-Release Access.
 
-\newline
+<br>
 
 **Standard Pre-Release Access:**  
 Scottish Government Health Department  
 NHS Board Chief Executives  
 NHS Board Communication leads  
 
-\newline
+<br>
 
 **Early Access for Management Information**  
 These statistics will also have been made available to those who needed access to ‘management information’, ie as part of the delivery of health and care:
 
-\newline
+<br>
 
 **Early Access for Quality Assurance**  
 These statistics will also have been made available to those who needed access to help quality assure the publication:
 
-[pagebreak]
+##### Page Break
 
 ###Appendix 4 – ISD and Official Statistics
 
-\newline
+<br>
 
 **About ISD**  
 Scotland has some of the best health service data in the world combining high quality, consistency, national coverage and the ability to link data to allow patient based analysis and follow up.
@@ -221,7 +351,7 @@ Information Services Division (ISD) is a business operating unit of NHS National
 **Mission**: Better Information, Better Decisions, Better Health  
 **Vision**: To be a valued partner in improving health and wellbeing in Scotland by providing a world class intelligence service.  
 
-\newline
+<br>
 
 **Official Statistics**  
 Information Services Division (ISD) is the principal and authoritative source of statistics on health and care services in Scotland. ISD is designated by legislation as a producer of ‘Official Statistics’. Our official statistics publications are produced to a high professional standard and comply with the Code of Practice for Official Statistics. The Code of Practice is produced and monitored by the UK Statistics Authority which is independent of Government. Under the Code of Practice, the format, content and timing of statistics publications are the responsibility of professional staff working within ISD. 
