@@ -190,24 +190,35 @@ https://www.statisticsauthority.gov.uk/national-statistician/types-of-official-s
 
 <br>
 
-```{r Contents, echo = FALSE, results="asis"}
-cat("1. Introduction",  
-    "2. Main Points",  
-    "3. Results and Commentary",  
-    "    A) Sub-heading",  
-    "    B) Sub-heading",  
-    "4. Glossary", 
-    "5. List of Tables", 
-    "6. Contact", 
-    "7. Further Information", 
-    "8. Rate this publication", 
-    "9. Appendices", 
-    "    A) Appendix 1 – Background information", 
-    "    B) Appendix 2 – Publication Metadata", 
-    "    C) Appendix 3 – Early access details", 
-    "    D) Appendix 4 – ISD and Official Statistics", 
-    sep = "\n")
-```
+<Span custom-style = "custom2">[Introduction](#introduction)</span><Span custom-style = "My_TOC">..2</span>
+
+<Span custom-style = "custom2">[Main Points](#main-points)</span><Span custom-style = "My_TOC">..2</span>  
+
+<Span custom-style = "custom2">[Results and Commentary](#results-and-commentary)</span><Span custom-style = "My_TOC">..2</span>  
+
+&ensp;&ensp;<Span custom-style = "custom2">[Sub-heading](#sub-heading)</span><Span custom-style = "My_TOC">..2</span>  
+
+&ensp;&ensp;<Span custom-style = "custom2">[Sub-heading](#sub-heading-1)</span><Span custom-style = "My_TOC">..2</span>  
+
+<Span custom-style = "custom2">[Glossary](#glossary)</span><Span custom-style = "My_TOC">..2</span>  
+
+<Span custom-style = "custom2">[List of Tables](#list-of-tables)</span><Span custom-style = "My_TOC">..2</span> 
+
+<Span custom-style = "custom2">[Contact](#contact)</span><Span custom-style = "My_TOC">..2</span>
+
+<Span custom-style = "custom2">[Further Information](#further-information)</span><Span custom-style = "My_TOC">..2</span>  
+
+<Span custom-style = "custom2">[Rate this publication](#rate-this-publication)</span><Span custom-style = "My_TOC">..2</span> 
+
+<Span custom-style = "custom2">[Appendices](#appendices)</span><Span custom-style = "My_TOC">..2</span>  
+
+&ensp;&ensp;<Span custom-style = "custom2">[Appendix 1 - Background information](#appendix-1-background-information)</span><Span custom-style = "My_TOC">..2</span> 
+
+&ensp;&ensp;<Span custom-style = "custom2">[Appendix 2 - Publication Metadata](#appendix-2-publication-metadata)</span><Span custom-style = "My_TOC">..2</span>  
+
+&ensp;&ensp;<Span custom-style = "custom2">[Appendix 3 - Early access details](#appendix-3-early-access-details)</span><Span custom-style = "My_TOC">..2</span>  
+
+&ensp;&ensp;<Span custom-style = "custom2">[Appendix 4 - ISD and Official Statistics](#appendix-4-isd-and-official-statistics)</span><Span custom-style = "My_TOC">..2</span>  
 
 ##### Page Break
 
@@ -288,10 +299,14 @@ Service
 Phone:  
 Email:  
 
+<br>
+
 ##Further Information
 Further Information can be found on the [ISD website](http://www.isdscotland.org/).  
 For more information on XXX see the [XXX section of our website](http://www.isdscotland.org/). For related topics, please see the [XXX](http://www.isdscotland.org/) pages.  
 The next release of this publication will be DD Month YYYY.  
+
+<br>
 
 ##Rate this publication
 Please [provide feedback](http://www.isdscotland.org/Health-Topics/HEALTHTOPIC/Publications/rate-this-publication.asp?ID=XXXX) on this publication to help us improve our services.
