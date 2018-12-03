@@ -29,7 +29,7 @@ chart <- ggplot(data = ChartData, aes(x = Month, y = Count, group = Year, color 
   xlab("Month") + ylab("Count") +
   ggtitle("Chart title")
 
-ggsave("chart1.png", plot = chart, device = "png")
+ggsave("chart1.png", plot = chart, device = "png", dpi = 300)
 
 #Create contact information
 contact1 <- c("name", "role", "number", "email")
