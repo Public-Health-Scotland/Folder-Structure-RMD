@@ -38,18 +38,18 @@ contact2 <- c("name", "role", "number", "email")
 contact <- data.frame(contact1, contact2)
 ```
 
-#Insert publication Title here
-###Subtitle
-####A National Statistics publication for Scotland
+# Insert publication Title here
+### Subtitle
+#### A National Statistics publication for Scotland
 
-####Pulication date: DD Month YYYY
-#####RESTRICTED STATISTICS: embargoed to 09:30 dd/mm/yyyy
+#### Pulication date: DD Month YYYY
+##### RESTRICTED STATISTICS: embargoed to 09:30 dd/mm/yyyy
 
-###About this release
+### About this release
 
 Vestibulum lacinia, turpis eu sagittis lacinia, justo orci blandit orci, ut suscipit tortor turpis et metus. Pellentesque sollicitudin nisl et porttitor laoreet. Nunc id purus pretium, suscipit justo vitae, pretium dui. Quisque congue ex dignissim tellus pulvinar, a interdum libero fermentum.
 
-###Main Points
+### Main Points
 
 Proin nec ultricies dolor. Maecenas pulvinar, enim et imperdiet cursus, mi
 
@@ -71,7 +71,7 @@ Maecenas bibendum consequat vehicula. Fusce id viverra lorem, et
     + Curabitur laoreet viverra magna eget dapibus. Maecenas scelerisque euismod mattis. Sed cursus.
     + Sed in iaculis lectus, sed fermentum urna. Donec efficitur diam eu ipsum viverra, eu ornare justo mollis. Phasellus in dictum tellus.
 
-###Background
+### Background
 
 Aliquam sed maximus ante, a imperdiet est. Vivamus vel diam facilisis, pulvinar erat consequat, consequat nulla. Praesent lorem dolor, luctus ut libero vitae, venenatis congue tortor.
 
@@ -79,13 +79,13 @@ Nunc at mauris euismod, mattis tellus sed, vehicula dolor. Duis quis auctor elit
 
 Please see [News and Updates section](http://www.isdscotland.org/) of our website for more details.
 
-###Contact
+### Contact
 
 ```{r, echo = FALSE}
     knitr::kable(contact, col.names=NULL)
 ```
 
-###Further Information
+### Further Information
 
 Find out more in the [full report](http://www.isdscotland.org/). The data from this publication is available to download [from our webpage](http://www.isdscotland.org/) along with a [background information and glossary](http://www.isdscotland.org/), and [metadata document](http://www.isdscotland.org/). 
 
@@ -93,8 +93,8 @@ For more information on XXX see the [XXX section of our website](http://www.isds
 
 The next release of this publication will be DD Month YYYY.
 
-###NHS Performs
+### NHS Performs
 
-A selection of information from this publication is included in **[NHS Performs](http://www.nhsperforms.scot/)**. NHS Performs is a website that brings together a range of information on how hositals and NHS Boards within NHSScotland are performing.
+A selection of information from this publication is included in [NHS Performs](http://www.nhsperforms.scot/). NHS Performs is a website that brings together a range of information on how hositals and NHS Boards within NHSScotland are performing.
 
 
