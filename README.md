@@ -9,7 +9,7 @@ a. Go to Insert - Cover Page. Choose a random cover page, and clear all the cont
 
 b. Double click on the footer of the second page (the next page after cover page). Choose Design - Page Number - Format Page Numbers. For page numbering, choose "Start at:" and set the value as 0. Thus the second page will have the page number 1 as we want. 
 
-c. For the cover page, copy and paste the header and footer from the cover page in the "NATIONAL_STATS_REPORT.docx". 
+c. For the cover page, copy and paste every element (including header, footer and textboxes) from the cover page in the "NATIONAL_STATS_REPORT.docx". 
 
 3. For Table of Contents, you may need to add it manually as well. Go to References - Table of Contents. This is something we need to explore further. I have included the creation of TOC in ISD-NATIONAL-STATS-REPORT.Rmd, however it won't format nicely with the dots in the middle. 
 
