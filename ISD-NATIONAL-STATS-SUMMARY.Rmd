@@ -32,14 +32,14 @@ chart <- ggplot(data = ChartData, aes(x = Month, y = Count, group = Year, color 
 ggsave("chart1.png", plot = chart, device = "png", dpi = 300)
 
 #Create contact information
-contact1 <- c("name", "role", "number", "email")
-contact2 <- c("name", "role", "number", "email")
+contact1 <- c("**name**", "role", "number", "email")
+contact2 <- c("**name**", "role", "number", "email")
 
 contact <- data.frame(contact1, contact2)
 ```
 
 # Insert publication Title here
-### Subtitle
+## Subtitle
 #### A National Statistics publication for Scotland
 
 #### Pulication date: DD Month YYYY
