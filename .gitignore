@@ -21,5 +21,12 @@ data/
 *.[rR][dD][aA][tT][aA]
 *.[rR][dD][sS]
 
-*.docx
-*.png
+# Output folder #
+output/
+
+# Temp folder #
+temp/
+
+# Config file #
+config.R
+config.[rR]
