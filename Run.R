@@ -1,12 +1,22 @@
+#########################################################################
+# Name of file - Run.R
+# Data release - Template
+# Original Authors - Tina Fu, Rory Madigan, Ewout Jaspers
+# Orginal Date - February 2019
+#
+# Type - Run RMarkdown summary and report templates
+# Written/run on - RStudio
+# Version of R - 3.5.1
+#
+# Description - Runs the Report and Summary markdown files
+#
+# Approximate run time - 1< minutes
+#########################################################################
+
 # RMarkdown Script
 source("config.R")
 
-data_filepath <- file.path(basefilepath, "data")
-temp_filepath <- file.path(basefilepath, "temp")
-output_filepath <- file.path(basefilepath, "output")
-output_figures_filepath <- file.path(basefilepath, "output/figures")
-rmarkdown_filepath <- file.path(basefilepath, "rmarkdown")
-scripts_filepath <- file.path(basefilepath, "code")
+
 
 ## Create Summary
 

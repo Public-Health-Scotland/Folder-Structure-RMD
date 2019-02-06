@@ -3,6 +3,14 @@ output:
   word_document:
     reference_docx: "NATIONAL_STATS_REPORT_TEMPLATE.docx"
 ---
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
+# Load config filepaths
+source("../config.R")
+fig_path <- output_filepath
+
+```
+
 ```{r TableData, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
 NHSBoard <- c("AA", "BR", "DG", "FF", "FV", "GR", "GGC", "HG", "LN", "LO", "NWTC", "OR", "SH", "TY", "WI", "**Scotland**")
 
@@ -59,8 +67,8 @@ FigureOne <- ggplot(data = FigureOneData, aes(x = HBR, y = UptakeRate, fill = HB
                                "#0391BF", "#0391BF", "#0391BF", "#0391BF", "#0391BF",
                                "#0391BF", "#092869", "#0391BF", "#0391BF", "#0391BF")) +
   xlab("NHS Board of Residence") + ylab("Uptake rate (%)")
-
-ggsave("Figure1_ggplot.png", plot = FigureOne, device = "png", dpi = 300)
+Figure1_filename <- paste0(output_filepath, "/Figure1_ggplot.png") 
+ggsave(Figure1_filename, plot = FigureOne, device = "png", dpi = 300)
 
 #Create Figure 2
 RollingYear <- c("2007-10", "2008-11", "2009-12", "2010-13", "2011-14", "2012-15", "2013-16")
@@ -81,8 +89,8 @@ FigureTwo <- ggplot(data = FigureTwoData, aes(x = RollingYear, y = DetectionRate
     axis.title.x = element_text(size = 9, face = "bold"),
     axis.title.y = element_text(size = 9, face = "bold")) +
   xlab("Three Year Rolling Period") + ylab("Cancer detection rate \n (per 1000 women screened)")
-  
-ggsave("Figure2_ggplot.png", plot = FigureTwo, device = "png", dpi = 300)
+Figure2_filename <- paste0(output_filepath, "/Figure2_ggplot.png")  
+ggsave(Figure2_filename, plot = FigureTwo, device = "png", dpi = 300)
 ```
 
 ```{r ListofTables, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
