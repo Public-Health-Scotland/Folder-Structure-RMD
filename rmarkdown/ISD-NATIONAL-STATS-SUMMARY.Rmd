@@ -7,7 +7,7 @@ output:
 ```{r, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
 # Load config filepaths
 source("../config.R")
-fig_path <- output_filepath
+
 #Create a pseudo chart
 library(ggplot2)
 
@@ -31,7 +31,7 @@ chart <- ggplot(data = ChartData, aes(x = Month, y = Count, group = Year, color 
     axis.ticks = element_line(colour="grey")) +
   xlab("Month") + ylab("Count") +
   ggtitle("Chart title")
-image1_filename <- paste0(output_filepath, "/chart1.png")
+image1_filename <- paste0(output_summary_filepath, "/chart1.png")
 ggsave(image1_filename, plot = chart, device = "png", dpi = 300)
 
 #Create contact information
@@ -60,7 +60,7 @@ Proin nec ultricies dolor. Maecenas pulvinar, enim et imperdiet cursus, mi
 
 * Quisque iaculis congue aliquet. Aenean in dictum nisl. Etiam quis ullamcorper ex. Aenean mollis ante eget.
 
-![Appropriate ALT Text to be added.](chart1.png) \
+![Appropriate ALT Text to be added.](`r image1_filename`) \
 
 Maecenas bibendum consequat vehicula. Fusce id viverra lorem, et
 

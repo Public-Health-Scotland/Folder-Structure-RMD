@@ -7,7 +7,6 @@ output:
 ```{r, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
 # Load config filepaths
 source("../config.R")
-fig_path <- output_filepath
 
 ```
 
@@ -67,7 +66,7 @@ FigureOne <- ggplot(data = FigureOneData, aes(x = HBR, y = UptakeRate, fill = HB
                                "#0391BF", "#0391BF", "#0391BF", "#0391BF", "#0391BF",
                                "#0391BF", "#092869", "#0391BF", "#0391BF", "#0391BF")) +
   xlab("NHS Board of Residence") + ylab("Uptake rate (%)")
-Figure1_filename <- paste0(output_filepath, "/Figure1_ggplot.png") 
+Figure1_filename <- paste0(output_report_filepath, "/Figure1_ggplot.png") 
 ggsave(Figure1_filename, plot = FigureOne, device = "png", dpi = 300)
 
 #Create Figure 2
@@ -89,7 +88,7 @@ FigureTwo <- ggplot(data = FigureTwoData, aes(x = RollingYear, y = DetectionRate
     axis.title.x = element_text(size = 9, face = "bold"),
     axis.title.y = element_text(size = 9, face = "bold")) +
   xlab("Three Year Rolling Period") + ylab("Cancer detection rate \n (per 1000 women screened)")
-Figure2_filename <- paste0(output_filepath, "/Figure2_ggplot.png")  
+Figure2_filename <- paste0(output_report_filepath, "/Figure2_ggplot.png")  
 ggsave(Figure2_filename, plot = FigureTwo, device = "png", dpi = 300)
 ```
 
@@ -263,7 +262,7 @@ knitr::kable(TableData, col.names = c("**NHS Board**", "**Q2 Cases**", "**Q2 Bed
 ```
 
 ####Figure 1: Uptake rate^1^ by NHS Board by three-year rolling period 2013-16^1,2,3,4^
-![Uptake rate by NHS Board by three-year rolling period 2013-16.](Figure1_ggplot.png) \
+![Uptake rate by NHS Board by three-year rolling period 2013-16.](`r Figure1_filename`) \
 
 1. Note one.  
 2. Note two.  
@@ -279,7 +278,7 @@ Pellentesque aliquam imperdiet neque et interdum. Nulla sodales tellus magna, id
 
 ####Figure 2: Trend in invasive cancer detection rate for Scotland
 ![Trend in invasive cancer detection rates for Scotland,
-three-year rolling periods (2007/10 to 2013/16). There is a bar for each three-year rolling period.](Figure2_ggplot.png) \
+three-year rolling periods (2007/10 to 2013/16). There is a bar for each three-year rolling period.](`r Figure2_filename`) \
 
 Fusce hendrerit nibh sit amet tellus tincidunt vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam non libero eu orci viverra rhoncus eu sed massa. Donec viverra scelerisque orci, sit amet dignissim eros ullamcorper rhoncus. Donec et metus sodales, aliquet ligula nec, bibendum leo. 
 
