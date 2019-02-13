@@ -10,30 +10,47 @@ source("../config.R")
 
 ```
 
-```{r TableData, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
+```{r TableData, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
 NHSBoard <- c("AA", "BR", "DG", "FF", "FV", "GR", "GGC", "HG", "LN", "LO", "NWTC", "OR", "SH", "TY", "WI", "**Scotland**")
 
-Q2Cases <- c(22, 2, 9, 9, 10, 16, 52, 9, 22, 44, 0, 1, 0, 24, 1, 221)
+Q2Cases <- as.character(c(22, 2, 9, 9, 10, 16, 52, 9, 22, 44, 0, 1, 0, 24, 1, 221))
+
+Q2Cases[16] <- "**221**"
 
 Q2BedDaysBase <- c(72081, 21517, 27799, 49932, 47432, 84310, 232889, 43682, 91535, 150550, 6566, 2401, 2590, 72783, 4870, 910937)
-Q2BedDays <- format(Q2BedDaysBase, big.mark=",", justify="right")
+
+Q2BedDays <- format(Q2BedDaysBase, big.mark = ",")
+
+Q2BedDays[16] <- "**910,937**"
+
 Q2RateBase <- c(30.5, 9.3, 32.4, 18.0, 21.1, 19.0, 22.3, 20.6, 24.0, 29.2, 0.0, 41.6, 0.0, 33.0, 20.5, 24.3)
-Q2Rate <-  format(Q2RateBase, nsmall=1, justify="right")
-Q3Cases <- c(19, 6, 4, 10, 10, 30, 79, 16, 24, 36, 0, 1, 0, 22, 0, 257)
+
+Q2Rate <- format(Q2RateBase, nsmall = 1)
+
+Q2Rate[16] <- "**24.3**"
+
+Q3Cases <- as.character(c(19, 6, 4, 10, 10, 30, 79, 16, 24, 36, 0, 1, 0, 22, 0, 257))
+
+Q3Cases[16] <- "**257**"
 
 Q3BedDaysBase <- c(69082, 19603, 27097, 47691, 50473, 76321, 206241, 42439, 87927, 148176, 7091, 2194, 2257, 70267, 4632, 861491)
-Q3BedDays <- format(Q3BedDaysBase, big.mark=",", justify="right")
-Q3RateBase <- c(27.5, 30.6, 14.8, 21.0, 19.8, 39.3, 38.3, 37.7, 27.3, 24.3, 0.0, 45.6, 0.0, 31.3, 0.0, 29.8) 
-Q3Rate <-  format(Q3RateBase, nsmall=1, justify="right")
 
+Q3BedDays <- format(Q3BedDaysBase, big.mark = ",")
 
+Q3BedDays[16] <- "**861,491**"
+
+Q3RateBase <- c(27.5, 30.6, 14.8, 21.0, 19.8, 39.3, 38.3, 37.7, 27.3, 24.3, 0.0, 45.6, 0.0, 31.3, 0.0, 29.8)
+
+Q3Rate <- format(Q3RateBase, nsmall = 1)
+
+Q3Rate[16] <- "**29.8**"
 
 TableData <- data.frame(NHSBoard, Q2Cases, Q2BedDays, Q2Rate, Q3Cases, Q3BedDays, Q3Rate)
 
-TableData[16, c(2:7)] <- c("**221**", "**910937**", "**24.3**", "**257**", "**861491**", "**29.8**")
+# TableData[16, c(2:7)] <- c("**221**", "**910,937**", "**24.3**", "**257**", "**861,491**", "**29.8**")
 ```
 
-```{r Figures, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
+```{r Figures, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
 library(ggplot2)
 library(scales)
 
@@ -56,8 +73,9 @@ FigureOne <- ggplot(data = FigureOneData, aes(x = HBR, y = UptakeRate, fill = HB
   theme(panel.background = element_blank(),
     panel.grid.major.x = element_line(size = .1, color = "#C0C0C0"), 
     panel.grid.major.y = element_blank(),
-    axis.title.x = element_text(size = 9, face = "bold"),
-    axis.title.y = element_text(size = 9, face = "bold")) +
+    axis.title.x = element_text(size = 10, face = "bold"),
+    axis.title.y = element_text(size = 10, face = "bold"),
+    axis.text = element_text(size = 10)) +
   scale_x_discrete(limits = c("Scotland", "Western Isles", "Tayside", "Shetland", "Orkney", 
                               "Lothian", "Lanarkshire", "Highland", "Greater Glasgow & Clyde",
                               "Grampian", "Forth Valley", "Fife", "Dumfries & Galloway", 
@@ -66,6 +84,8 @@ FigureOne <- ggplot(data = FigureOneData, aes(x = HBR, y = UptakeRate, fill = HB
                                "#0391BF", "#0391BF", "#0391BF", "#0391BF", "#0391BF",
                                "#0391BF", "#092869", "#0391BF", "#0391BF", "#0391BF")) +
   xlab("NHS Board of Residence") + ylab("Uptake rate (%)")
+
+
 Figure1_filename <- paste0(output_report_filepath, "/Figure1_ggplot.png") 
 ggsave(Figure1_filename, plot = FigureOne, device = "png", dpi = 300)
 
@@ -85,14 +105,16 @@ FigureTwo <- ggplot(data = FigureTwoData, aes(x = RollingYear, y = DetectionRate
   theme(panel.background = element_blank(),
     panel.grid.major.x = element_blank(), 
     panel.grid.major.y = element_line(size = .1, color = "#C0C0C0"), 
-    axis.title.x = element_text(size = 9, face = "bold"),
-    axis.title.y = element_text(size = 9, face = "bold")) +
+    axis.title.x = element_text(size = 10, face = "bold"),
+    axis.title.y = element_text(size = 10, face = "bold"),
+    axis.text = element_text(size = 10)) +
   xlab("Three Year Rolling Period") + ylab("Cancer detection rate \n (per 1000 women screened)")
+  
 Figure2_filename <- paste0(output_report_filepath, "/Figure2_ggplot.png")  
 ggsave(Figure2_filename, plot = FigureTwo, device = "png", dpi = 300)
 ```
 
-```{r ListofTables, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
+```{r ListofTables, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
 FileName <- c("Performance standards", 
               "Performance standards (three-year rolling periods)",
               "Uptake by NHS Board",
@@ -111,36 +133,36 @@ glossary2 <- c("Donec et metus sodales, aliquet ligula nec, bibendum leo.",
 glossary <- data.frame(glossary1, glossary2)
 ```
 
-```{r MetaData, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
-Indicator <- c("Publication title",
-"Description",
-"Theme",
-"Topic",
-"Format",
-"Data source(s)",
-"Date that data are acquired",
-"Release date",
-"Frequency",
-"Timeframe of data and timeliness",
-"Continuity of data",
-"Revisions statement",
-"Revisions relevant to this publication",
-"Concepts and definitions",
-"Relevance and key uses of the statistics",
-"Accuracy",
-"Completeness",
-"Comparability",
-"Accessibility",
-"Coherence and clarity",
-"Value type and unit of measurement",
-"Disclosure",
-"Official Statistics designation",
-"UK Statistics Authority Assessment",
-"Last published",
-"Next published",
-"Date of first publication",
-"Help email",
-"Date form completed")
+```{r MetaData, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
+Indicator <- c("**Publication title**",
+"**Description**",
+"**Theme**",
+"**Topic**",
+"**Format**",
+"**Data source(s)**",
+"**Date that data are acquired**",
+"**Release date**",
+"**Frequency**",
+"**Timeframe of data and timeliness**",
+"**Continuity of data**",
+"**Revisions statement**",
+"**Revisions relevant to this publication**",
+"**Concepts and definitions**",
+"**Relevance and key uses of the statistics**",
+"**Accuracy**",
+"**Completeness**",
+"**Comparability**",
+"**Accessibility**",
+"**Coherence and clarity**",
+"**Value type and unit of measurement**",
+"**Disclosure**",
+"**Official Statistics designation**",
+"**UK Statistics Authority Assessment**",
+"**Last published**",
+"**Next published**",
+"**Date of first publication**",
+"**Help email**",
+"**Date form completed**")
 
 Description <- c("",
 "",
@@ -175,7 +197,7 @@ Description <- c("",
 MetaData <- data.frame(Indicator, Description)
 ```
 
-#This is a National Statistics Publication
+###### This is a National Statistics Publication
 
 ![National Statistics Quality Mark](kitemark_tcm97-17949.jpg) \
 
@@ -194,112 +216,63 @@ https://www.statisticsauthority.gov.uk/osr/code-of-practice/
 Find out more about National Statistics at:  
 https://www.statisticsauthority.gov.uk/national-statistician/types-of-official-statistics/ 
 
-##### Page Break
-
-##Contents
-
-<br>
-
-<Span custom-style = "custom2">[Introduction](#introduction)</span><Span custom-style = "My_TOC">..2</span>
-
-<Span custom-style = "custom2">[Main Points](#main-points)</span><Span custom-style = "My_TOC">..2</span>  
-
-<Span custom-style = "custom2">[Results and Commentary](#results-and-commentary)</span><Span custom-style = "My_TOC">..2</span>  
-
-&ensp;&ensp;<Span custom-style = "custom2">[Sub-heading](#sub-heading)</span><Span custom-style = "My_TOC">..2</span>  
-
-&ensp;&ensp;<Span custom-style = "custom2">[Sub-heading](#sub-heading-1)</span><Span custom-style = "My_TOC">..2</span>  
-
-<Span custom-style = "custom2">[Glossary](#glossary)</span><Span custom-style = "My_TOC">..2</span>  
-
-<Span custom-style = "custom2">[List of Tables](#list-of-tables)</span><Span custom-style = "My_TOC">..2</span> 
-
-<Span custom-style = "custom2">[Contact](#contact)</span><Span custom-style = "My_TOC">..2</span>
-
-<Span custom-style = "custom2">[Further Information](#further-information)</span><Span custom-style = "My_TOC">..2</span>  
-
-<Span custom-style = "custom2">[Rate this publication](#rate-this-publication)</span><Span custom-style = "My_TOC">..2</span> 
-
-<Span custom-style = "custom2">[Appendices](#appendices)</span><Span custom-style = "My_TOC">..2</span>  
-
-&ensp;&ensp;<Span custom-style = "custom2">[Appendix 1 - Background information](#appendix-1-background-information)</span><Span custom-style = "My_TOC">..2</span> 
-
-&ensp;&ensp;<Span custom-style = "custom2">[Appendix 2 - Publication Metadata](#appendix-2-publication-metadata)</span><Span custom-style = "My_TOC">..2</span>  
-
-&ensp;&ensp;<Span custom-style = "custom2">[Appendix 3 - Early access details](#appendix-3-early-access-details)</span><Span custom-style = "My_TOC">..2</span>  
-
-&ensp;&ensp;<Span custom-style = "custom2">[Appendix 4 - ISD and Official Statistics](#appendix-4-isd-and-official-statistics)</span><Span custom-style = "My_TOC">..2</span>  
-
-##### Page Break
-
-##Introduction
-
+<Div custom-style = "Heading 2_pgbrk">Introduction</div>
 In tristique lobortis sagittis. Phasellus mollis mattis iaculis. Vivamus nunc justo, finibus nec maximus vel, ultricies vel urna. Ut ac mi sit amet augue fringilla egestas et ut mauris. Morbi volutpat, felis vel egestas scelerisque, nunc purus auctor ligula, non lobortis nulla felis in tortor. In nec commodo sem. Donec a dolor gravida, lobortis ligula vitae, pulvinar ante. Integer faucibus eros ut luctus tristique.
 Proin vitae vehicula purus. Cras consequat iaculis venenatis. Morbi vel risus vestibulum, aliquet mi in, volutpat massa. Sed urna sem, posuere eu semper vitae, ullamcorper quis leo. Mauris nisi metus, scelerisque sed urna eu, maximus porttitor ante. Sed scelerisque accumsan commodo. Sed interdum justo volutpat, sodales nisi sed, consectetur arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec sodales lacus in erat elementum viverra. Phasellus faucibus faucibus erat vitae pharetra. Mauris sed blandit dolor. Duis consequat fermentum diam quis elementum. Maecenas euismod non lorem sit amet ornare.
 Praesent congue molestie nisi, ut congue dui mattis in. Vivamus vel urna risus. Donec sed blandit ex. Donec vel aliquam velit, in vestibulum lectus. Vivamus molestie massa in quam porttitor viverra. Nulla facilisi. Suspendisse fermentum metus justo, vel elementum ante rutrum eget.
 
-##### Page Break
-
-##Main Points
-
+<Div custom-style = "Heading 2_pgbrk">Main Points</div>
 * In tristique lobortis sagittis. Phasellus mollis mattis iaculis. Vivamus nunc justo, finibus nec maximus vel, ultricies vel urna. Ut ac mi sit amet augue fringilla egestas et ut mauris. Morbi volutpat, felis vel egestas scelerisque, nunc purus auctor ligula, non lobortis nulla felis in tortor. In nec commodo sem.
 * Proin vitae vehicula purus. Cras consequat iaculis venenatis. Morbi vel risus vestibulum, aliquet mi in, volutpat massa. Sed urna sem, posuere eu semper vitae, ullamcorper quis leo. Mauris nisi metus, scelerisque sed urna eu, maximus porttitor ante. Sed scelerisque accumsan commodo. Sed interdum justo volutpat, sodales nisi sed, consectetur arcu. Interdum et malesuada fames ac ante ipsum primis in faucibus.
 * Praesent congue molestie nisi, ut congue dui mattis in. Vivamus vel urna risus. Donec sed blandit ex. Donec vel aliquam velit, in vestibulum lectus.
 
-##### Page Break
-
-##Results and Commentary
+<Div custom-style = "Heading 2_pgbrk">Results and Commentary</div>
 Suspendisse velit nisi, tempor ut posuere ut, blandit in mauris. Suspendisse commodo sagittis pretium. Nullam.
 
-###Sub-heading
+### Sub-heading
 Suspendisse potenti. Donec sit amet porttitor urna. Fusce egestas et elit quis imperdiet. Quisque tempor, metus vel gravida fermentum, odio neque imperdiet justo, vitae sagittis turpis velit vitae velit. Nulla iaculis egestas tellus, non efficitur lorem molestie at. Donec urna sem, pharetra ut nunc non, tempor ullamcorper dolor. Duis fringilla mi eu erat lobortis, ac sagittis ipsum eleifend. Fusce eget rhoncus lorem.
 Sed suscipit nisl vel orci scelerisque mattis. Proin ut tortor et purus bibendum pharetra vel elementum dolor. Morbi orci massa, egestas vel dictum quis, maximus id justo. Fusce eu sem consequat, mollis nulla in, mollis nisl. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at facilisis augue.
 
-####Table title
+##### Table title
 ```{r kable_TableData, echo = FALSE}
 knitr::kable(TableData, col.names = c("**NHS Board**", "**Q2 Cases**", "**Q2 Bed Days**", 
                                       "**Q2 Rate**", "**Q3 Cases**", "**Q3 Bed Days**", "**Q3 Rate**"))
 ```
 
-####Figure 1: Uptake rate^1^ by NHS Board by three-year rolling period 2013-16^1,2,3,4^
+<Div custom-style = "Heading 4_pgbrk">Figure 1: Uptake rate^1^ by NHS Board by three-year rolling period 2013-16^1,2,3,4^</div>
 ![Uptake rate by NHS Board by three-year rolling period 2013-16.](`r Figure1_filename`) \
 
-1. Note one.  
-2. Note two.  
-3. Note three.  
-4. Note four.  
+<Div custom-style = "Normal_Notes">
+1. Note one.
+2. Note two.
+3. Note three.
+4. Note four. 
+</div>  
 
-###Sub-heading
+### Sub-heading
 Fusce hendrerit nibh sit amet tellus tincidunt vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam non libero eu orci viverra rhoncus eu sed massa.
 Mauris ac neque vel erat varius cursus. Praesent at molestie felis. Nunc eget ipsum non lectus facilisis dictum quis viverra magna. Pellentesque elementum condimentum accumsan. Nunc vel pharetra augue. Pellentesque vitae lectus cursus magna blandit aliquet. In aliquet sapien sit amet viverra aliquam.
 Pellentesque aliquam imperdiet neque et interdum. Nulla sodales tellus magna, id venenatis justo pulvinar ut. Etiam luctus facilisis auctor. Curabitur interdum feugiat convallis. Nullam mi libero, hendrerit vitae condimentum in, iaculis porta purus. Suspendisse potenti. Donec sed molestie nisi, ut blandit ex. Proin tempor, mauris sit amet consectetur placerat, elit lorem placerat dui, sed placerat mi ante a purus.
 
-##### Page Break
 
-####Figure 2: Trend in invasive cancer detection rate for Scotland
+#### Figure 2: Trend in invasive cancer detection rate for Scotland
 ![Trend in invasive cancer detection rates for Scotland,
 three-year rolling periods (2007/10 to 2013/16). There is a bar for each three-year rolling period.](`r Figure2_filename`) \
 
 Fusce hendrerit nibh sit amet tellus tincidunt vehicula. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam non libero eu orci viverra rhoncus eu sed massa. Donec viverra scelerisque orci, sit amet dignissim eros ullamcorper rhoncus. Donec et metus sodales, aliquet ligula nec, bibendum leo. 
 
-##### Page Break
-
-##Glossary
+####### Glossary
 ```{r kable_glossary, echo = FALSE}
     knitr::kable(glossary, col.names = NULL)
 ```
 
-##### Page Break
-
-##List of Tables
+####### List of Tables
 <br>
 ```{r kable_ListOfTables, echo = FALSE}
 knitr::kable(ListofTables, col.names = c("**File name**", "**File and size**"))
 ```
 
-##### Page Break
-
-##Contact
+<Div custom-style = "Heading 2_pgbrk">Contact</div>
 **Name, title**  
 Service  
 Phone:  
@@ -311,35 +284,30 @@ Email:
 
 <br>
 
-##Further Information
+## Further Information
 Further Information can be found on the [ISD website](http://www.isdscotland.org/).  
 For more information on XXX see the [XXX section of our website](http://www.isdscotland.org/). For related topics, please see the [XXX](http://www.isdscotland.org/) pages.  
 The next release of this publication will be DD Month YYYY.  
 
 <br>
 
-##Rate this publication
+## Rate this publication
 Please [provide feedback](http://www.isdscotland.org/Health-Topics/HEALTHTOPIC/Publications/rate-this-publication.asp?ID=XXXX) on this publication to help us improve our services.
 
-##### Page Break
-
-##Appendices
-###Appendix 1 – Background information
+<Div custom-style = "Heading 2_pgbrk">Appendices</div>
+### Appendix 1 – Background information
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta. Mauris massa. Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. 
 Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor. Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa. Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus metus, ullamcorper vel, tincidunt sed, euismod in, nibh. 
 Quisque volutpat condimentum velit. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Nam nec ante. Sed lacinia, urna non tincidunt mattis, tortor neque adipiscing diam, a cursus ipsum ante quis turpis. Nulla facilisi. Ut fringilla. Suspendisse potenti. Nunc feugiat mi a tellus consequat imperdiet. Vestibulum sapien. Proin quam. Etiam ultrices. Suspendisse in justo eu magna luctus suscipit. Sed lectus. Integer euismod lacus luctus magna.
 
-##### Page Break
 
-###Appendix 2 – Publication Metadata
+<Div custom-style = "Heading 3_pgbrk">Appendix 2 – Publication Metadata</div>
 <br>
 ```{r kable_MetaData, echo = FALSE}
 knitr::kable(MetaData, col.names = c("**Metadata Indicator**", "**Description**"))
 ```
 
-##### Page Break
-
-###Appendix 3 – Early access details
+<Div custom-style = "Heading 3_pgbrk">Appendix 3 – Early access details</div>
 
 <br>
 
@@ -363,9 +331,7 @@ These statistics will also have been made available to those who needed access t
 **Early Access for Quality Assurance**  
 These statistics will also have been made available to those who needed access to help quality assure the publication:
 
-##### Page Break
-
-###Appendix 4 – ISD and Official Statistics
+<Div custom-style = "Heading 3_pgbrk">Appendix 4 – ISD and Official Statistics</div>
 
 <br>
 

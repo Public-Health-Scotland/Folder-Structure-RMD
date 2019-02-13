@@ -18,11 +18,10 @@
 library("rmarkdown")
 library("knitr")
 source("config.R")
+library('pryr')
 
 folder_code_path <- paste0(code_filepath, "/folders.R")
 source(folder_code_path)
-
-
 
 ## Create Summary
 
@@ -41,4 +40,6 @@ report_output <-
   paste0(output_report_filepath, "/report.docx")
 
 rmarkdown::render(report_markdown, output_file = report_output)
+
+
 
