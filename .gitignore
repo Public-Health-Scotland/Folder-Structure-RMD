@@ -2,6 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+packrat/lib*/
 
 # 'data' folder #
 data/
@@ -19,3 +20,13 @@ data/
 # R data files #
 *.[rR][dD][aA][tT][aA]
 *.[rR][dD][sS]
+
+# Output folder #
+output/
+
+# Temp folder #
+temp/
+
+# Config file #
+config.R
+config.[rR]
