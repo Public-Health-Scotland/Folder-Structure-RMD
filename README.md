@@ -30,7 +30,7 @@ iv.	Go to Insert – Footer. Scroll down to the general section and select the f
 
 i.	Since the tables in RMarkdown output document are not formatted by having border line, filled colour for column headers etc, we need to format the tables using VBA code. **This only needs to be set up once and it will always in the macro list for future use.** Go to View – Macros – View Macros. Type a macro name as you want, and click Create. It will open up the VBA developer window. 
 
-ii.	Copy the following code to the developer window and click Save button to save the macro. 
+ii.	Copy the following code to the developer window and click Save button to save the macro (from Sub to End Sub). 
 
 Sub SetStyleOfAllTablesAndPreserveAlignment()
 ' SetStyleOfAllTablesAndPreserveAlignment Macro
