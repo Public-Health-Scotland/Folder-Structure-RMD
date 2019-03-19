@@ -1,6 +1,5 @@
 # R config 
-# Rename this file to config.R
-basefilepath <- "Add base filepath (with forward slash /)"
+basefilepath <- getwd()
 data_filepath <- file.path(basefilepath, "data")
 temp_filepath <- file.path(basefilepath, "temp")
 output_filepath <- file.path(basefilepath, "output")
