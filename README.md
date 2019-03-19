@@ -89,7 +89,7 @@ End Sub
 
 iii.	You can close the developer window. Go to View – Macros – View Macros. Select the macro you created in step ii, and click Run. Thus all the tables in the output document should be nicely formatted. 
 
-iv.	This step is optional only if you want to apply more styles to some specific tables. We currently have built in two table styles in the “NATIONAL_STATS_REPORT_TEMPLATE.docx”. The style named as “ISD_pubs_tables” is for all tables except Glossary, and the other named as “Glossary_Style” is for Glossary. You can create more styles if you want. To do that, open “NATIONAL_STATS_REPORT_TEMPLATE.docx”, click any cell of the table, and go to Design. Click on the down arrow in Table Styles. 
+iv.	**This step is optional only if you want to apply more styles to some specific tables.** We currently have built in two table styles in the “NATIONAL_STATS_REPORT_TEMPLATE.docx”. The style named as “ISD_pubs_tables” is for all tables except Glossary, and the other named as “Glossary_Style” is for Glossary. You can create more styles if you want. To do that, open “NATIONAL_STATS_REPORT_TEMPLATE.docx”, click any cell of the table, and go to Design. Click on the down arrow in Table Styles. 
 
 ![](https://github.com/Tina815/Images/blob/master/screenshot3.PNG)
 
