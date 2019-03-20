@@ -1,5 +1,5 @@
 # R config 
-basefilepath <- getwd()
+basefilepath <- "Add the file path where RMarkdown.Rproj sits (with forward slash /)"
 data_filepath <- file.path(basefilepath, "data")
 temp_filepath <- file.path(basefilepath, "temp")
 output_filepath <- file.path(basefilepath, "output")
