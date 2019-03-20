@@ -9,7 +9,9 @@ R markdown scripts for the publication template (summary and full report).
 
 3. Please feel free to change the ggplot2 codes according to the type of chart you want to create and formattings you would like to apply. 
 
-4. After knitting to Word, you need to add the cover page and its footer manually. Here are the 
+**4. After cloning the repository, you first need to change the basefilepath to the file path where RMarkdown.Rproj sits (using forward slash "/") in config.R and save it. Then go to Run.R to run the scripts.**
+
+5. After knitting to Word, you need to add the cover page and its footer manually. Here are the 
 steps to follow:
 
 i.	Open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to Insert – Cover Page – Save Selection to Cover Page Gallery. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always in the gallery for future use.** 
@@ -26,7 +28,7 @@ iii.	Open the RMarkdown word output document. Go to Insert – Cover Page. Scrol
 
 iv.	Go to Insert – Footer. Scroll down to the general section and select the footer template you saved in step ii. Thus the cover page has been fully inserted into the document. 
 
-5. Table Formatting
+6. Table Formatting
 
 i.	Since the tables in RMarkdown output document are not formatted by having border line, filled colour for column headers etc, we need to format the tables using VBA code. **This only needs to be set up once and it will always in the macro list for future use.** Go to View – Macros – View Macros. Type a macro name as you want, and click Create. It will open up the VBA developer window. 
 
@@ -101,7 +103,7 @@ Click New Table Style. Give it a Name, and you can set the table format as you w
 
 Please note that the bookmark names are generated wherever you use “#” in the RMarkdown script for headings. Go to Insert – Bookmark, then you will see a list of all bookmark names in the document.
 
-6. Table of Contents (TOC)
+7. Table of Contents (TOC)
 
 i.	We need to insert the TOC manually as we cannot find a way to insert it on a specific page in RMarkdown script. Please note: this step should be done after running the macro setting the table formats (step b). Otherwise it will make the bookmarks not in right order. 
 
