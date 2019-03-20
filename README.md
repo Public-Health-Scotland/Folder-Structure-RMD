@@ -14,7 +14,7 @@ R markdown scripts for the publication template (summary and full report).
 5. After knitting to Word, you need to add the cover page and its footer manually. Here are the 
 steps to follow:
 
-i.	Open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to Insert – Cover Page – Save Selection to Cover Page Gallery. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always in the gallery for future use.** 
+i.	Open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to Insert – Cover Page – Save Selection to Cover Page Gallery. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** 
 
 ![](https://github.com/Tina815/Images/blob/master/screenshot6.PNG)
 
@@ -22,7 +22,7 @@ ii.	Double click on the footer, and select the whole footer like this
 
 ![](https://github.com/Tina815/Images/blob/master/screenshot2.PNG)
 
-Then go to Insert – Footer – Save Selection to Footer Gallery. Give it a name (e.g. ISD_Publication_Footer) and click OK. **This only needs to be set up once and it will always in the gallery for future use.** Now you can close “Cover_Page_V5.docx”. 
+Then go to Insert – Footer – Save Selection to Footer Gallery. Give it a name (e.g. ISD_Publication_Footer) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** Now you can close “Cover_Page_V5.docx”. 
 
 iii.	Open the RMarkdown word output document. Go to Insert – Cover Page. Scroll down to the general section and select the cover page template you saved in step i. We can notice there appears a blank space above the text “Information Services Division”. To fix that, go to Page Layout – Margins – Custom Margins. Set the “Top” number as 0.62 cm. Now it should be back to the top. 
 
@@ -30,7 +30,7 @@ iv.	Go to Insert – Footer. Scroll down to the general section and select the f
 
 6. Table Formatting
 
-i.	Since the tables in RMarkdown output document are not formatted by having border line, filled colour for column headers etc, we need to format the tables using VBA code. **This only needs to be set up once and it will always in the macro list for future use.** Go to View – Macros – View Macros. Type a macro name as you want, and click Create. It will open up the VBA developer window. 
+i.	Since the tables in RMarkdown output document are not formatted by having border line, filled colour for column headers etc, we need to format the tables using VBA code. **This only needs to be set up once and it will always be in the macro list for future use.** Go to View – Macros – View Macros. Type a macro name as you want, and click Create. It will open up the VBA developer window. 
 
 ii.	Copy the following code to the developer window and click Save button to save the macro (from Sub to End Sub). 
 
