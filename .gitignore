@@ -26,3 +26,7 @@ output/
 
 # Temp folder #
 temp/
+
+# Config file #
+config.R
+config.[rR]
