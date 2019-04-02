@@ -1,5 +1,7 @@
 # R config 
-basefilepath <- "Add the file path where RMarkdown.Rproj sits (with forward slash /)"
+library(here)
+
+basefilepath <- here()
 data_filepath <- file.path(basefilepath, "data")
 temp_filepath <- file.path(basefilepath, "temp")
 output_filepath <- file.path(basefilepath, "output")
