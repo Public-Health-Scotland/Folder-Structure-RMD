@@ -11,7 +11,7 @@ see RMarkdown related files:
 
 * You can open ISD-NATIONAL-STATS-SUMMARY.Rmd and ISD-NATIONAL-STATS-REPORT.Rmd to change the contents as you need for your summary and report, including relevant text, ggplot2 code to create charts. 
 
-* In "ISD-NATIONAL-STATS-REPORT.Rmd", for Appendix 3 – Early Access Details, not every publication will have the information for “Early Access for Management Information” and “Early Access for quality assurance”. So each team should judge every time if these sections are needed. If not, please comment out the relevant RMarkdown script so that the text will not show in the final output. 
+* In "ISD-NATIONAL-STATS-REPORT.Rmd", for Appendix 3 – Early Access Details, not every publication will have the information for “Early Access for Management Information” and “Early Access for quality assurance”. So each team should judge every time if these sections are needed. If not, please comment out (Ctrl+Shift+c) the relevant RMarkdown script so that the text will not show in the final output. 
 
 ![](https://github.com/Tina815/Images/blob/master/screenshot4.PNG)
 
