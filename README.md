@@ -101,7 +101,7 @@ Sub SetStyleOfAllTablesAndPreserveAlignment()
         objTable.PreferredWidth = 100 'Sets the Preferred Table width to 100% of the width of the page.
         
     Next objTable
-'
+
 End Sub
 
 iii.	You can close the developer window. Go to View – Macros – View Macros. Select the macro you created in step ii, and click Run. Thus all the tables in the output document should be nicely formatted. 
