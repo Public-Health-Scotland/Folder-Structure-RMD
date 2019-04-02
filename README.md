@@ -22,7 +22,7 @@ install.packages("package name") to install them.
 
 **2. After editting .Rmd files, go back to the main folder and open "Run.R" file. Run the whole script in Run.R file.**
 
-3. Leave RStudio and go to the folder where you saved the zip file. You can find the Word document for summary in folder "output -> summary", and report in folder "output -> report".
+3. Leave RStudio and go to the folder where you saved the zip file. You can find the Word document for summary in folder "output -> summary" (summary.docx), and report in folder "output -> report" (report.docx).
 
 4. Thus we have completed the RMarkdown steps. Then we need to carry out some manual steps which have not been automated in RMarkdown process for the "report.docx".
 
