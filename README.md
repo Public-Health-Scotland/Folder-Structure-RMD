@@ -17,6 +17,9 @@ see RMarkdown related files:
 
 * The NATIONAL_STATS_SUMMARY_TEMPLATE.docx is used as a template for ISD-NATIONAL-STATS-SUMMARY.Rmd. The NATIONAL_STATS_REPORT_TEMPLATE.docx is used as a template for ISD-NATIONAL-STATS-REPORT.Rmd. 
 
+* The packages you need are: here, rmarkdown, knitr, pryr. Please check you have them installed. You can use 
+install.packages("package name") to install them.
+
 **2. After editting .Rmd files, go back to the main folder and open "config.R" file. Change the basefilepath to the file path where RMarkdown.Rproj sits (using forward slash "/") and save the file. Then open "Run.R" and run the scripts.**
 
 3. Leave RStudio and go to the folder where you saved the zip file. You can find the Word document for summary in folder "output -> summary", and report in folder "output -> report".
