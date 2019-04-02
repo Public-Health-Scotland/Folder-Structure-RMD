@@ -1,20 +1,32 @@
 # RMarkdown
-R markdown scripts for the publication template (summary and full report). 
+R markdown template for producing summary and full report. 
 
-1. The NATIONAL_STATS_SUMMARY_TEMPLATE.docx is used as a template for ISD-NATIONAL-STATS-SUMMARY.Rmd. The NATIONAL_STATS_REPORT_TEMPLATE.docx is used as a template for ISD-NATIONAL-STATS-REPORT.Rmd. 
+* To use this template, click on "Clone or download" -> "Download ZIP" and save it to your preferred folder.
+![](https://github.com/Tina815/Images/blob/master/screenshot7.PNG)
+* Go to the zip file, right click on it and choose WinZip -> Extract to here.
+* After extracting, go to "RMarkdown-master" folder. Open up "RMarkdown.Rproj" in RStudio. Then follow the steps below:
 
-2. For Appendix 3 – Early Access Details, not every publication will have the information for “Early Access for Management Information” and “Early Access for quality assurance”. So each team should judge every time if these sections are needed. If not, please comment out the relevant RMarkdown script so that the text will not show in the final output. 
+1. You can see all the files listed in the Files panel in RStudio. Click on "rmarkdown" folder, you can 
+see RMarkdown related files:
+
+* You can open ISD-NATIONAL-STATS-SUMMARY.Rmd and ISD-NATIONAL-STATS-REPORT.Rmd to change the contents as you need for your summary and report, including relevant text, ggplot2 code to create charts. 
+
+* In "ISD-NATIONAL-STATS-REPORT.Rmd", for Appendix 3 – Early Access Details, not every publication will have the information for “Early Access for Management Information” and “Early Access for quality assurance”. So each team should judge every time if these sections are needed. If not, please comment out the relevant RMarkdown script so that the text will not show in the final output. 
 
 ![](https://github.com/Tina815/Images/blob/master/screenshot4.PNG)
 
-3. Please feel free to change the ggplot2 codes according to the type of chart you want to create and formattings you would like to apply. 
+* The NATIONAL_STATS_SUMMARY_TEMPLATE.docx is used as a template for ISD-NATIONAL-STATS-SUMMARY.Rmd. The NATIONAL_STATS_REPORT_TEMPLATE.docx is used as a template for ISD-NATIONAL-STATS-REPORT.Rmd. 
 
-**4. After cloning the repository, you first need to change the basefilepath to the file path where RMarkdown.Rproj sits (using forward slash "/") in config.R and save it. Then go to Run.R to run the scripts.**
+**2. After editting .Rmd files, go back to the main folder and open "config.R" file. Change the basefilepath to the file path where RMarkdown.Rproj sits (using forward slash "/") and save the file. Then open "Run.R" and run the scripts.**
 
-5. After knitting to Word, you need to add the cover page and its footer manually. Here are the 
+3. Leave RStudio and go to the folder where you saved the zip file. You can find the Word document for summary in folder "output -> summary", and report in folder "output -> report".
+
+4. Thus we have completed the RMarkdown steps. Then we need to carry out some manual steps which have not been automated in RMarkdown process for the "report.docx".
+
+5. First of all, you need to add the cover page and its footer manually. Here are the 
 steps to follow:
 
-i.	Open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to Insert – Cover Page – Save Selection to Cover Page Gallery. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** 
+i.	Go to "rmarkdown" folder and open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to Insert – Cover Page – Save Selection to Cover Page Gallery. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** 
 
 ![](https://github.com/Tina815/Images/blob/master/screenshot6.PNG)
 
@@ -24,13 +36,13 @@ ii.	Double click on the footer, and select the whole footer like this
 
 Then go to Insert – Footer – Save Selection to Footer Gallery. Give it a name (e.g. ISD_Publication_Footer) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** Now you can close “Cover_Page_V5.docx”. 
 
-iii.	Open the RMarkdown word output document. Go to Insert – Cover Page. Scroll down to the general section and select the cover page template you saved in step i. We can notice there appears a blank space above the text “Information Services Division”. To fix that, go to Page Layout – Margins – Custom Margins. Set the “Top” number as 0.62 cm. Now it should be back to the top. 
+iii.	Open report.docx. Go to Insert – Cover Page. Scroll down to the general section and select the cover page template you saved in step i. We can notice there appears a blank space above the text “Information Services Division”. To fix that, go to Page Layout – Margins – Custom Margins. Set the “Top” number as 0.62 cm. Now it should be back to the top. 
 
 iv.	Go to Insert – Footer. Scroll down to the general section and select the footer template you saved in step ii. Thus the cover page has been fully inserted into the document. 
 
 6. Table Formatting
 
-i.	Since the tables in RMarkdown output document are not formatted by having border line, filled colour for column headers etc, we need to format the tables using VBA code. **This only needs to be set up once and it will always be in the macro list for future use.** Go to View – Macros – View Macros. Type a macro name as you want, and click Create. It will open up the VBA developer window. 
+i.	Since the tables in report.docx are not formatted by having border line, filled colour for column headers etc, we need to format the tables using VBA code. **Creating VBA code only needs to be set up once and it will always be in the macro list for future use.** Go to View – Macros – View Macros. Type a macro name as you want, and click Create. It will open up the VBA developer window. 
 
 ii.	Copy the following code to the developer window and click Save button to save the macro (from Sub to End Sub). 
 
@@ -105,7 +117,7 @@ Please note that the bookmark names are generated wherever you use “#” in th
 
 7. Table of Contents (TOC)
 
-i.	We need to insert the TOC manually as we cannot find a way to insert it on a specific page in RMarkdown script. Please note: this step should be done after running the macro setting the table formats (step b). Otherwise it will make the bookmarks not in right order. 
+i.	We need to insert the TOC manually as we cannot find a way to insert it on a specific page in RMarkdown script. **Please note: this step should be done after running the macro setting the table formats. Otherwise it will make the bookmarks not in right order.** 
 
 ii.	Click on the end of last text line on the page “This is a National Publication” (page number 1). 
 
