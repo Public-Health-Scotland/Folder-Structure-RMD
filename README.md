@@ -2,16 +2,16 @@
 R markdown template for producing summary and full report. 
 
 * To use this template, click on "Clone or download" -> "Download ZIP" and save it to your preferred folder.
-![](https://github.com/Tina815/Images/blob/master/screenshot7.PNG)
-* Go to the zip file, right click on it and choose WinZip -> Extract to here.
+![](https://github.com/Tina815/Images/blob/master/screenshot8.PNG)
+* Go to the zip file, right click on it and choose *WinZip -> Extract to here*.
 * After extracting, go to "RMarkdown-master" folder. Open up "RMarkdown.Rproj" in RStudio. Then follow the steps below:
 
 1. You can see all the files listed in the Files panel in RStudio. Click on "rmarkdown" folder, you can 
 see RMarkdown related files:
 
-* You can open ISD-NATIONAL-STATS-SUMMARY.Rmd and ISD-NATIONAL-STATS-REPORT.Rmd to change the contents as you need for your summary and report, including relevant text, ggplot2 code to create charts. 
+* You can open ISD-NATIONAL-STATS-SUMMARY.Rmd and ISD-NATIONAL-STATS-REPORT.Rmd to change the contents as you need for your summary and report, including relevant text, data and ggplot2 code to create charts. 
 
-* In "ISD-NATIONAL-STATS-REPORT.Rmd", for Appendix 3 – Early Access Details, not every publication will have the information for “Early Access for Management Information” and “Early Access for quality assurance”. So each team should judge every time if these sections are needed. If not, please comment out (Ctrl+Shift+c) the relevant RMarkdown script so that the text will not show in the final output. 
+* In "ISD-NATIONAL-STATS-REPORT.Rmd", for Appendix 3 – Early Access Details, not every publication will have the information for “Early Access for Management Information” and “Early Access for quality assurance”. So each team should judge for each publication if these sections are needed. If they are not, please comment out (Ctrl+Shift+c) the relevant RMarkdown script so that the text will not show in the final output. 
 
 ![](https://github.com/Tina815/Images/blob/master/screenshot4.PNG)
 
@@ -20,11 +20,11 @@ see RMarkdown related files:
 * The packages you need are: here, rmarkdown, knitr, pryr. Please check you have them installed. You can use 
 install.packages("package name") to install them.
 
-**2. After editting .Rmd files, go back to the main folder and open "Run.R" file. Run the whole script in Run.R file.**
+  **2. After editing .Rmd files, go back to the main folder and open "Run.R" file. Run the whole script in the Run.R file.**
 
-3. Leave RStudio and go to the folder where you saved the zip file. You can find the Word document for summary in folder "output -> summary" (summary.docx), and report in folder "output -> report" (report.docx).
+3. Leave RStudio and go to the folder where you saved the zip file. You can find the Word document for publication summary in folder "output -> summary" (summary.docx), and publication report in folder "output -> report" (report.docx).
 
-4. Thus we have completed the RMarkdown steps. Then we need to carry out some manual steps which have not been automated in RMarkdown process for the "report.docx".
+4. We have now completed the RMarkdown steps. However we still need to carry out some manual steps which have not been automated in the RMarkdown process for the "report.docx".
 
 5. First of all, you need to add the cover page and its footer manually. Here are the 
 steps to follow:
