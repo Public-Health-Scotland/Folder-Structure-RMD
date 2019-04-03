@@ -20,7 +20,7 @@ see RMarkdown related files:
 * The packages you need are: here, rmarkdown, knitr, pryr. Please check you have them installed. You can use 
 install.packages("package name") to install them.
 
-  **2. After editing .Rmd files, go back to the main folder and open "Run.R" file. Run the whole script in the Run.R file.**
+2. After editing .Rmd files, go back to the main folder and open "Run.R" file. Run the whole script in the Run.R file.
 
 3. Leave RStudio and go to the folder where you saved the zip file. You can find the Word document for publication summary in folder "output -> summary" (summary.docx), and publication report in folder "output -> report" (report.docx).
 
@@ -29,9 +29,9 @@ install.packages("package name") to install them.
 5. First of all, you need to add the cover page and its footer manually. Here are the 
 steps to follow:
 
-i.	Go to "rmarkdown" folder and open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to Insert – Cover Page – Save Selection to Cover Page Gallery. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** 
-
-![](https://github.com/Tina815/Images/blob/master/screenshot6.PNG)
+  i.	Go to "rmarkdown" folder and open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to Insert – Cover Page – Save Selection to Cover Page Gallery. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** 
+  
+  ![](https://github.com/Tina815/Images/blob/master/screenshot6.PNG)
 
 ii.	Double click on the footer, and select the whole footer like this
 
