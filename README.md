@@ -11,7 +11,7 @@ see RMarkdown related files:
 
 * You can open ISD-NATIONAL-STATS-SUMMARY.Rmd and ISD-NATIONAL-STATS-REPORT.Rmd to change the contents as you need for your summary and report, including relevant text, data and ggplot2 code to create charts. 
 
-* In "ISD-NATIONAL-STATS-REPORT.Rmd", for Appendix 3 – Early Access Details, not every publication will have the information for “Early Access for Management Information” and “Early Access for quality assurance”. So each team should judge for each publication if these sections are needed. If they are not, please comment out (Ctrl+Shift+c) the relevant RMarkdown script so that the text will not show in the final output. 
+* In "ISD-NATIONAL-STATS-REPORT.Rmd", for Appendix 3 – Early Access Details, not every publication will have the information for “Early Access for Management Information” and “Early Access for quality assurance”. So each team should judge for each publication if these sections are needed. If they are not, please comment out (Ctrl+Shift+C) the relevant RMarkdown script so that the text will not show in the final output. 
 
 ![](https://github.com/Tina815/Images/blob/master/screenshot4.PNG)
 
@@ -29,25 +29,25 @@ install.packages("package name") to install them.
 5. First of all, you need to add the cover page and its footer manually. Here are the 
 steps to follow:
 
-      i.	Go to "rmarkdown" folder and open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to Insert – Cover Page – Save Selection to Cover Page Gallery. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** 
+      i.	Go to "rmarkdown" folder and open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to *Insert – Cover Page – Save Selection to Cover Page Gallery*. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** 
       
       ![](https://github.com/Tina815/Images/blob/master/screenshot6.PNG)
 
-ii.	Double click on the footer, and select the whole footer like this
+      ii.	Double click on the footer, and select the whole footer like this by pressing Ctrl + A
+      
+      ![](https://github.com/Tina815/Images/blob/master/screenshot2.PNG)
+      
+      Then go to *Insert – Footer – Save Selection to Footer Gallery*. Give it a name (e.g. ISD_Publication_Footer) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** Now you can close “Cover_Page_V5.docx”. 
+      
+      iii. **Insert the Cover Page into the publication report.** Open report.docx. Go to *Insert – Cover Page*. Scroll down to the general section and select the cover page template you saved in step i. We can notice there appears a blank space above the text “Information Services Division”. To fix that, go to *Page Layout – Margins – Custom Margins*. Set the “Top” number as 0.62 cm. Now it should be back to the top. 
+      
+      iv.	**Insert the Footer into the publication report.** Go to *Insert – Footer*. Scroll down to the general section and select the footer template you saved in step ii. Thus the cover page has been fully inserted into the document. 
 
-![](https://github.com/Tina815/Images/blob/master/screenshot2.PNG)
+6. Set the Table Formatting Using a VBA Macro
 
-Then go to Insert – Footer – Save Selection to Footer Gallery. Give it a name (e.g. ISD_Publication_Footer) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** Now you can close “Cover_Page_V5.docx”. 
-
-iii.	Open report.docx. Go to Insert – Cover Page. Scroll down to the general section and select the cover page template you saved in step i. We can notice there appears a blank space above the text “Information Services Division”. To fix that, go to Page Layout – Margins – Custom Margins. Set the “Top” number as 0.62 cm. Now it should be back to the top. 
-
-iv.	Go to Insert – Footer. Scroll down to the general section and select the footer template you saved in step ii. Thus the cover page has been fully inserted into the document. 
-
-6. Table Formatting
-
-i.	Since the tables in report.docx are not formatted by having border line, filled colour for column headers etc, we need to format the tables using VBA code. **Creating VBA code only needs to be set up once and it will always be in the macro list for future use.** Go to View – Macros – View Macros. Type a macro name as you want, and click Create. It will open up the VBA developer window. 
-
-ii.	Copy the following code to the developer window and click Save button to save the macro (from Sub to End Sub). 
+      i.	Since the tables in report.docx are not formatted by having border line, filled colour for column headers etc, we need to format the tables using VBA code. **Saving VBA code only needs to be done once and it will always be in the macro list for future use.** Go to *View – Macros – View Macros*. Type a macro name as you want, and click Create. It will open up the VBA developer window. 
+      
+      ii.	Copy the following code to the developer window and click Save button to save the macro (from Sub to End Sub). 
 
     Sub SetStyleOfAllTablesAndPreserveAlignment()
     ' SetStyleOfAllTablesAndPreserveAlignment Macro
@@ -104,31 +104,31 @@ ii.	Copy the following code to the developer window and click Save button to sav
     
     End Sub
 
-iii.	You can close the developer window. Go to View – Macros – View Macros. Select the macro you created in step ii, and click Run. Thus all the tables in the output document should be nicely formatted. 
+      iii.	**Run the VBA Macro to set the table styles.** You can close the developer window. Go to *View – Macros – View Macros*. Select the macro you created in step ii, and click Run. Thus all the tables in the output document should be nicely formatted. 
+      
+      iv.	**This step is optional only if you want to apply more styles to some specific tables.** We currently have built in two table styles in the “NATIONAL_STATS_REPORT_TEMPLATE.docx”. The style named as “ISD_pubs_tables” is for all tables except Glossary, and the other named as “Glossary_Style” is for Glossary. You can create more styles if you want. To do that, open “NATIONAL_STATS_REPORT_TEMPLATE.docx”, click any cell of the table, and go to Design. Click on the down arrow in Table Styles. 
+      
+      ![](https://github.com/Tina815/Images/blob/master/screenshot3.PNG)
+      
+      Click "New Table Style". Give it a Name, and you can set the table format as you want. You can choose different settings for different table element in “Apply formatting to” dropdown list. Then click OK. Save and close the document. To apply the new style, you only need to replace the bookmark name with “tableA”, and the table style name you set with “TableA_Style” in the VBA code:
+      
+              If PreviousBookmarkName = "tableA" Then 'Change these as needed for each style type!
+                  objTable.Style = "TableA_Style"
+              End If
+      
+      Please note that the bookmark names are generated wherever you use “#” in the RMarkdown script for headings. Go to *Insert – Bookmark*, then you will see a list of all bookmark names in the document.
 
-iv.	**This step is optional only if you want to apply more styles to some specific tables.** We currently have built in two table styles in the “NATIONAL_STATS_REPORT_TEMPLATE.docx”. The style named as “ISD_pubs_tables” is for all tables except Glossary, and the other named as “Glossary_Style” is for Glossary. You can create more styles if you want. To do that, open “NATIONAL_STATS_REPORT_TEMPLATE.docx”, click any cell of the table, and go to Design. Click on the down arrow in Table Styles. 
+7. Insert Table of Contents (TOC)
 
-![](https://github.com/Tina815/Images/blob/master/screenshot3.PNG)
-
-Click New Table Style. Give it a Name, and you can set the table format as you want. You can choose different settings for different table element in “Apply formatting to” dropdown list. Then click OK. Save and close the document. To apply the new style, you only need to replace the bookmark name with “tableA”, and the table style name you set with “TableA_Style” in the VBA code:
-
-        If PreviousBookmarkName = "tableA" Then 'Change these as needed for each style type!
-            objTable.Style = "TableA_Style"
-        End If
-
-Please note that the bookmark names are generated wherever you use “#” in the RMarkdown script for headings. Go to Insert – Bookmark, then you will see a list of all bookmark names in the document.
-
-7. Table of Contents (TOC)
-
-i.	We need to insert the TOC manually as we cannot find a way to insert it on a specific page in RMarkdown script. **Please note: this step should be done after running the macro setting the table formats. Otherwise it will make the bookmarks not in right order.** 
-
-ii.	Click on the end of last text line on the page “This is a National Publication” (page number 1). 
-
-![](https://github.com/Tina815/Images/blob/master/screenshot5.PNG)
-
-Go to Insert – Page Break, so that a new blank page will be inserted. 
-
-iii.	Go to References – Table of Contents. Choose Built-in template Automatic Table 1. Thus the TOC have been fully inserted. 
+      i.	We need to insert the TOC manually as we cannot find a way to insert it on a specific page in the RMarkdown script. **Please note: this step should be done after running the macro setting the table formats. Otherwise it will make the bookmarks not in right order.** 
+      
+      ii.	Click on the end of last text line on the page “This is a National Publication” (page number 1). 
+      
+      ![](https://github.com/Tina815/Images/blob/master/screenshot5.PNG)
+      
+      Go to *Insert – Page Break*, so that a new blank page will be inserted. 
+      
+      iii.	Go to *References – Table of Contents*. Choose Built-in template Automatic Table 1. Now the TOC has been fully inserted. 
 
 
 
