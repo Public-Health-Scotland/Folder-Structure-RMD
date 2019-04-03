@@ -13,7 +13,7 @@ see RMarkdown related files:
 
 * In "ISD-NATIONAL-STATS-REPORT.Rmd", for Appendix 3 – Early Access Details, not every publication will have the information for “Early Access for Management Information” and “Early Access for quality assurance”. So each team should judge for each publication if these sections are needed. If they are not, please comment out (Ctrl+Shift+C) the relevant RMarkdown script so that the text will not show in the final output. 
 
-![](https://github.com/Tina815/Images/blob/master/screenshot4.PNG)
+    ![](https://github.com/Tina815/Images/blob/master/screenshot4.PNG)
 
 * The NATIONAL_STATS_SUMMARY_TEMPLATE.docx is used as a template for ISD-NATIONAL-STATS-SUMMARY.Rmd. The NATIONAL_STATS_REPORT_TEMPLATE.docx is used as a template for ISD-NATIONAL-STATS-REPORT.Rmd. 
 
