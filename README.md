@@ -29,7 +29,7 @@ install.packages("package name") to install them.
 5. First of all, you need to add the cover page and its footer manually. Here are the 
 steps to follow:
 
-  i.	Go to "rmarkdown" folder and open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to Insert – Cover Page – Save Selection to Cover Page Gallery. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** 
+  a.	Go to "rmarkdown" folder and open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to Insert – Cover Page – Save Selection to Cover Page Gallery. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** 
   
   ![](https://github.com/Tina815/Images/blob/master/screenshot6.PNG)
 
