@@ -1,7 +1,7 @@
 ---
 output: 
   word_document:
-    reference_docx: "National_Template.docx"
+    reference_docx: "NATIONAL_STATS_SUMMARY_TEMPLATE.docx"
 ---
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
