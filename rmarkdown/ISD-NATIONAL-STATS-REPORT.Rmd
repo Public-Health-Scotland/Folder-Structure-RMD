@@ -118,14 +118,27 @@ ggsave(Figure2_filename, plot = FigureTwo, width = 17.78, height = 14.24, units 
 ```
 
 ```{r ListofTables, echo=FALSE, message=FALSE, warning=FALSE, error=FALSE}
-FileName <- c("Performance standards", 
-              "Performance standards (three-year rolling periods)",
-              "Uptake by NHS Board",
-              "Historical trends in Performance standards (three-year rolling periods)",
-              "Historical trends in Uptake by NHS Board")
-FileandSize <- c("Excel 500 Kb", "Excel 750 Kb", "Excel 750 Kb", "Excel 1.2 Mb", "Excel 1.2 Mb")
+## Automated method for adding file names and sizes
+file_list <- list.files(output_datafile_filepath)
+paths <- c()
+sizeskb <- c()
+file_name <- c()
+file_size <- c()
 
-ListofTables <- data.frame(FileName, FileandSize)
+
+for (i in 1:length(file_list)){
+  paths[i] <- paste0(output_datafile_filepath,"/", file_list[i])
+  sizeskb[i] <- round(file.size(paths[i]) / 1024)
+  text <- unlist(strsplit(file_list[i], ".", fixed = TRUE))
+  file_name[i] <- text[1]
+  if(toupper(substring(text[2], 1, 3)) == "XLS") {
+    file_size[i] <- paste0("Excel ", sizeskb[i], " Kb")
+  } else {
+    file_size[i] <- paste0(toupper(text[2]), " ",sizeskb[i]," Kb")
+  }
+}
+
+ListofTables <- data.frame(file_name, file_size)
 ```
 
 ```{r glossary, echo=FALSE, message=FALSE, warning=FALSE,error=FALSE}
