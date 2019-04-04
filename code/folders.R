@@ -39,3 +39,8 @@ dir.create(output_report_filepath,
            showWarning = FALSE
 )
 
+dir.create(output_datafile_filepath, 
+           recursive = FALSE, 
+           showWarning = FALSE
+)
+
