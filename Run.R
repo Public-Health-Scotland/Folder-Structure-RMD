@@ -23,6 +23,9 @@ library('pryr')
 folder_code_path <- paste0(code_filepath, "/folders.R")
 source(folder_code_path)
 
+# Please save the data files you want to publish such as Excel files into output -> datafile folder 
+# before running the following script. 
+
 ## Create Summary
 
 summary_markdown <- paste0(rmarkdown_filepath,"/ISD-NATIONAL-STATS-SUMMARY.Rmd")
@@ -30,7 +33,7 @@ summary_markdown <- paste0(rmarkdown_filepath,"/ISD-NATIONAL-STATS-SUMMARY.Rmd")
 summary_output <- 
   paste0(output_summary_filepath, "/summary.docx")
 
-rmarkdown::render(summary_markdown, output_file = summary_output)
+rmarkdown::render(summary_markdown, output_file = summary_output, encoding = "UTF-8")
 
 ## Create Report
 
@@ -39,7 +42,7 @@ report_markdown <- paste0(rmarkdown_filepath,"/ISD-NATIONAL-STATS-REPORT.Rmd")
 report_output <- 
   paste0(output_report_filepath, "/report.docx")
 
-rmarkdown::render(report_markdown, output_file = report_output)
+rmarkdown::render(report_markdown, output_file = report_output, encoding = "UTF-8")
 
 
 
