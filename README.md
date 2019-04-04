@@ -20,7 +20,7 @@ see RMarkdown related files:
 * The packages you need are: here, rmarkdown, knitr, pryr. Please check you have them installed. You can use 
 install.packages("package name") to install them.
 
-2. After editing .Rmd files, go back to the main folder and open "Run.R" file. Run the whole script in the Run.R file.
+2. After editing .Rmd files, go back to the main folder and open "Run.R" file. Run the whole script by following the instructions in the file. **For the publication report, you need to save the data files you want to publish in output -> datafile folder before running "Create Report" script, as there are functions written to automatically detect the data files' names and sizes for List of Tables.**
 
 3. Leave RStudio and go to the folder where you saved the zip file. You can find the Word document for publication summary in folder "output -> summary" (summary.docx), and publication report in folder "output -> report" (report.docx).
 
