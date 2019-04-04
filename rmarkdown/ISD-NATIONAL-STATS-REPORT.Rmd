@@ -125,7 +125,6 @@ sizeskb <- c()
 file_name <- c()
 file_size <- c()
 
-
 for (i in 1:length(file_list)){
   paths[i] <- paste0(output_datafile_filepath,"/", file_list[i])
   sizeskb[i] <- round(file.size(paths[i]) / 1024)
