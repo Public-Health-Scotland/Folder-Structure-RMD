@@ -2,7 +2,7 @@
 R markdown template for producing summary and full report. 
 
 * To use this template, click on "Clone or download" -> "Download ZIP" and save it to your preferred folder.
-![](https://github.com/Tina815/Images/blob/master/screenshot8.PNG)
+![](https://github.com/NHS-NSS-transforming-publications/Images/blob/master/RMarkdown7.PNG)
 * Go to the zip file, right click on it and choose *WinZip -> Extract to here*.
 * After extracting, go to "RMarkdown-master" folder. Open up "RMarkdown.Rproj" in RStudio. Then follow the steps below:
 
@@ -13,7 +13,7 @@ see RMarkdown related files:
 
 * In "ISD-NATIONAL-STATS-REPORT.Rmd", for Appendix 3 – Early Access Details, not every publication will have the information for “Early Access for Management Information” and “Early Access for quality assurance”. So each team should judge for each publication if these sections are needed. If they are not, please comment out (Ctrl+Shift+C) the relevant RMarkdown script so that the text will not show in the final output. 
 
-    ![](https://github.com/Tina815/Images/blob/master/screenshot4.PNG)
+    ![](https://github.com/NHS-NSS-transforming-publications/Images/blob/master/RMarkdown4.PNG)
 
 * The NATIONAL_STATS_SUMMARY_TEMPLATE.docx is used as a template for ISD-NATIONAL-STATS-SUMMARY.Rmd. The NATIONAL_STATS_REPORT_TEMPLATE.docx is used as a template for ISD-NATIONAL-STATS-REPORT.Rmd. 
 
@@ -31,11 +31,11 @@ steps to follow:
 
       i.	Go to "rmarkdown" folder and open “Cover_Page_V5.docx”, press Ctrl + A to select all contents. Go to *Insert – Cover Page – Save Selection to Cover Page Gallery*. Give it a name (e.g. ISD_Publication_Report) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** 
       
-      ![](https://github.com/Tina815/Images/blob/master/screenshot6.PNG)
+      ![](https://github.com/NHS-NSS-transforming-publications/Images/blob/master/RMarkdown6.PNG)
 
       ii.	Double click on the footer, and select the whole footer like this by pressing Ctrl + A
       
-      ![](https://github.com/Tina815/Images/blob/master/screenshot2.PNG)
+      ![](https://github.com/NHS-NSS-transforming-publications/Images/blob/master/RMarkdown2.PNG)
       
       Then go to *Insert – Footer – Save Selection to Footer Gallery*. Give it a name (e.g. ISD_Publication_Footer) and click OK. **This only needs to be set up once and it will always be in the gallery for future use.** Now you can close “Cover_Page_V5.docx”. 
       
@@ -108,7 +108,7 @@ steps to follow:
       
       iv.	**This step is optional only if you want to apply more styles to some specific tables.** We currently have built in two table styles in the “NATIONAL_STATS_REPORT_TEMPLATE.docx”. The style named as “ISD_pubs_tables” is for all tables except Glossary, and the other named as “Glossary_Style” is for Glossary. You can create more styles if you want. To do that, open “NATIONAL_STATS_REPORT_TEMPLATE.docx”, click any cell of the table, and go to Design. Click on the down arrow in Table Styles. 
       
-      ![](https://github.com/Tina815/Images/blob/master/screenshot3.PNG)
+      ![](https://github.com/NHS-NSS-transforming-publications/Images/blob/master/RMarkdown3.PNG)
       
       Click "New Table Style". Give it a Name, and you can set the table format as you want. You can choose different settings for different table element in “Apply formatting to” dropdown list. Then click OK. Save and close the document. To apply the new style, you only need to replace the bookmark name with “tableA”, and the table style name you set with “TableA_Style” in the VBA code:
       
@@ -124,7 +124,7 @@ steps to follow:
       
       ii.	Click on the end of last text line on the page “This is a National Publication” (page number 1). 
       
-      ![](https://github.com/Tina815/Images/blob/master/screenshot5.PNG)
+      ![](https://github.com/NHS-NSS-transforming-publications/Images/blob/master/RMarkdown5.PNG)
       
       Go to *Insert – Page Break*, so that a new blank page will be inserted. 
       
